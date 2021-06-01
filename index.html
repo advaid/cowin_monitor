@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src='./cowin.js'></script>
+    <title>CoWin Monitor</title>
+</head>
+<body>
+    <form name="formSubmit" id='formSubmit' action="javascript:void(0);">
+        District Code: <input type="text" id="district">
+        Date: <input type="date" id="date" >
+        <input type="submit" onclick="findVaccine()">
+    </form>
+
+    <div>Status: <p id="status"></p></div>
+    <audio controls id="alarm" hidden>
+        <source src="./assets/beep.aac" type="audio/aac">
+      Your browser does not support the audio element.
+      </audio>
+    
+</body>
+</html>
