@@ -17,6 +17,11 @@ function findVaccine() {
 }
 
 function apiCalls(district, date){
+    var now = new Date();
+    var h = now.getHours();
+    var m = now.getMinutes();
+    var s = now.getSeconds();
+    document.getElementById('time').innerHTML = h + ":" + m + ":" + s;
     document.getElementById("status").innerHTML = 'Scanning...'
     fetch('https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/calendarByDistrict?district_id='+district+'&date='+date,
     {
@@ -24,7 +29,7 @@ function apiCalls(district, date){
     })
     .then(response => response.json())
     .then(data => {
-        
+        document.getElementById("res").innerHTML = JSON.stringify(data)
         console.log(data)
         if(data.centers.length == 0) {
             document.getElementById("status").innerHTML = 'No Results'
