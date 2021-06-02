@@ -1,6 +1,7 @@
 function findVaccine() {
     
     alert('Activate Vaccine Tracker?')
+    document.getElementById("status").innerHTML = 'Initilizing...'
     var district = document.getElementById("district").value;
     var dateObj = new Date(document.getElementById("date").value)
     var dd = dateObj.getDate()
@@ -16,7 +17,7 @@ function findVaccine() {
 }
 
 function apiCalls(district, date){
-    document.getElementById("status").innerHTML = 'Scanning'
+    document.getElementById("status").innerHTML = 'Scanning...'
     fetch('https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/calendarByDistrict?district_id='+district+'&date='+date,
     {
         method :'GET'
@@ -54,5 +55,5 @@ function apiCalls(district, date){
     
     })
     .catch((e) => console.log('Cannot fetch now'))
-    document.getElementById("status").innerHTML = 'Stalled'
+    document.getElementById("status").innerHTML = 'Waiting... '
 }
