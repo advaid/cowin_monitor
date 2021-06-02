@@ -12,7 +12,7 @@ function findVaccine() {
     // alarm.play();
     console.log('https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/calendarByDistrict?district_id='+district+'&date='+date)
     apiCalls(district, date)
-    let inter = window.setInterval(apiCalls, 120000, district, date) 
+    let inter = window.setInterval(apiCalls, 240000, district, date) 
 }
 
 function apiCalls(district, date){
@@ -36,10 +36,10 @@ function apiCalls(district, date){
                     console.log('Center: ', data.centers[i])
                     for(session in data.centers[i].sessions) {
                         
-                        if(data.centers[i].sessions[session].available_capacity > 0) { //data.centers[i].sessions[session].vaccine != "COVISHIELD"  &&
-                            console.log('Found Vaccine')
+                        if(data.centers[i].sessions[session].vaccine != "COVISHIELD"  && data.centers[i].sessions[session].available_capacity_dose1 > 0) { //data.centers[i].sessions[session].vaccine != "COVISHIELD"  &&
+                            console.log('Dose 1 Vaccine Found')
                             alarm.play();
-                            document.getElementById("status").innerHTML = 'Vaccine Found'
+                            document.getElementById("status").innerHTML = 'Dose 1 Vaccine Found'
                             breaker = 1
                             break;
                         }
