@@ -29,7 +29,7 @@ function apiCalls(district, date){
     })
     .then(response => response.json())
     .then(data => {
-        document.getElementById("res").innerHTML = JSON.stringify(data)
+        //document.getElementById("res").innerHTML = JSON.stringify(data)
         console.log(data)
         if(data.centers.length == 0) {
             document.getElementById("status").innerHTML = 'No Results'
@@ -42,18 +42,22 @@ function apiCalls(district, date){
                     console.log('Center: ', data.centers[i])
                     for(session in data.centers[i].sessions) {
                         //data.centers[i].sessions[session].vaccine != "COVISHIELD"  && 
-                        if(data.centers[i].sessions[session].available_capacity_dose1 > 0) { 
+                        if(data.centers[i].sessions[session].available_capacity_dose1 > 0 && data.centers[i].sessions[session].min_age_limit == 18) { 
                             console.log('Dose 1 Vaccine Found')
                             alarm.play();
                             document.getElementById("status").innerHTML = 'Dose 1 Vaccine Found'
-                            breaker = 1
-                            break;
+                            var node = document.createElement("LI");
+                            var text = document.createTextNode(JSON.stringify(data.centers[i].sessions[session]))
+                            node.appendChild(text)
+                            document.getElementById("res").appendChild(node); 
+//                             breaker = 1
+//                             break;
                         }
                     }
                 }
-                if(breaker){
-                    break;
-                }
+//                 if(breaker){
+//                     break;
+//                 }
             }
         }
     
