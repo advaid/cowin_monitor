@@ -50,14 +50,14 @@ function apiCalls(district, date){
                             var text = document.createTextNode(JSON.stringify(data.centers[i].sessions[session]))
                             node.appendChild(text)
                             document.getElementById("res").appendChild(node); 
-//                             breaker = 1
-//                             break;
+                             breaker = 1
+                             break;
                         }
                     }
                 }
-//                 if(breaker){
-//                     break;
-//                 }
+                if(breaker){
+                     break;
+                 }
             }
         }
     
