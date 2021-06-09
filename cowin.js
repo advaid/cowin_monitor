@@ -42,7 +42,7 @@ function apiCalls(district, date){
                     console.log('Center: ', data.centers[i])
                     for(session in data.centers[i].sessions) {
                         //data.centers[i].sessions[session].vaccine != "COVISHIELD"  && 
-                        if(data.centers[i].sessions[session].available_capacity_dose1 > 0 && data.centers[i].sessions[session].min_age_limit == 18) { 
+                        if(data.centers[i].sessions[session].available_capacity_dose2 > 0 && data.centers[i].sessions[session].min_age_limit == 18) { 
                             console.log('Dose 1 Vaccine Found')
                             alarm.play();
                             document.getElementById("status").innerHTML = 'Dose 1 Vaccine Found'
@@ -50,14 +50,14 @@ function apiCalls(district, date){
                             var text = document.createTextNode(JSON.stringify(data.centers[i].sessions[session]))
                             node.appendChild(text)
                             document.getElementById("res").appendChild(node); 
-                             breaker = 1
-                             break;
+//                              breaker = 1
+//                              break;
                         }
                     }
                 }
-                if(breaker){
-                     break;
-                 }
+//                 if(breaker){
+//                      break;
+//                  }
             }
         }
     
