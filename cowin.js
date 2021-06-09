@@ -47,7 +47,7 @@ function apiCalls(district, date){
                             alarm.play();
                             document.getElementById("status").innerHTML = 'Dose 1 Vaccine Found'
                             var node = document.createElement("LI");
-                            var text = document.createTextNode(JSON.stringify(data.centers[i].sessions[session]))
+                            var text = document.createTextNode( JSON.stringify(data.centers[i].sessions[session]) + "    Pin: " + JSON.stringify(data.centers[i].pincode) )
                             node.appendChild(text)
                             document.getElementById("res").appendChild(node); 
 //                              breaker = 1
