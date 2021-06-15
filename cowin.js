@@ -13,7 +13,7 @@ function findVaccine() {
     // alarm.play();
     console.log('https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/calendarByDistrict?district_id='+district+'&date='+date)
     apiCalls(district, date)
-    let inter = window.setInterval(apiCalls, 180000, district, date) 
+    let inter = window.setInterval(apiCalls, 120000, district, date) 
 }
 
 function apiCalls(district, date){
