@@ -42,10 +42,21 @@ function apiCalls(district, date){
                     console.log('Center: ', data.centers[i])
                     for(session in data.centers[i].sessions) {
                         //data.centers[i].sessions[session].vaccine != "COVISHIELD"  && 
-                        if(data.centers[i].sessions[session].available_capacity_dose1 > 0 && data.centers[i].sessions[session].min_age_limit == 18) { 
+                        if(data.centers[i].sessions[session].available_capacity_dose1 > 0 && data.centers[i].sessions[session].min_age_limit <= 18) { 
                             console.log('Dose 1 Vaccine Found')
                             alarm.play();
                             document.getElementById("status").innerHTML = 'Vaccine Found. See response to find PIN code, age, dose'
+                            var node = document.createElement("LI");
+                            var text = document.createTextNode( JSON.stringify(data.centers[i].sessions[session]) + "    Pin: " + JSON.stringify(data.centers[i].pincode) )
+                            node.appendChild(text)
+                            document.getElementById("res").appendChild(node); 
+//                              breaker = 1
+//                              break;
+                        }
+                        if(data.centers[i].sessions[session].available_capacity_dose2 > 0 && data.centers[i].sessions[session].min_age_limit <= 45 && data.centers[i].sessions[session].vaccine == "COVAXIN") { 
+                            console.log('Dose 2 Vaccine Found')
+                            alarm.play();
+                            document.getElementById("status1").innerHTML = 'COVAXIN Found. See response to find PIN code, age, dose'
                             var node = document.createElement("LI");
                             var text = document.createTextNode( JSON.stringify(data.centers[i].sessions[session]) + "    Pin: " + JSON.stringify(data.centers[i].pincode) )
                             node.appendChild(text)
